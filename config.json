@@ -1,0 +1,44 @@
+{
+  "table": {
+    "startLetter": "А",
+    "endLetter": "Д",
+    "startNumber": 1,
+    "endNumber": 10,
+    "cellWidth": "100px",
+    "cellHeight": "60px",
+    "zoom": 100,
+    "cornerText": "",
+    "cornerFontSize": "20px",
+    "cornerFontFamily": "Arial, sans-serif",
+    "cornerBold": false,
+    "cornerColor": "#ffffff"
+  },
+  "styles": {
+    "table": {
+      "borderCollapse": "collapse",
+      "backgroundColor": "#ffffff",
+      "backgroundOpacity": 100,
+      "fontFamily": "Arial, sans-serif"
+    },
+    "cell": {
+      "border": "2px solid #333333",
+      "padding": "10px",
+      "textAlign": "center",
+      "fontSize": "24px",
+      "color": "#000000",
+      "backgroundColor": "#f5f5f5",
+      "backgroundOpacity": 100,
+      "textStrokeEnabled": false,
+      "textStrokeColor": "#ffffff",
+      "textStrokeWidth": "2px",
+      "fontBold": false
+    },
+    "header": {
+      "backgroundColor": "#4CAF50",
+      "backgroundOpacity": 100,
+      "color": "#ffffff",
+      "fontBold": true
+    }
+  }
+}
+

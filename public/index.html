@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор сетки таблиц</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>⚙️ Настройки</h2>
+            
+            <div class="section">
+                <h3>Параметры таблицы</h3>
+                <label>
+                    Начальная буква (колонки):
+                    <input type="text" id="startLetter" maxlength="1" value="А">
+                </label>
+                <label>
+                    Конечная буква (колонки):
+                    <input type="text" id="endLetter" maxlength="1" value="Д">
+                </label>
+                <label>
+                    Начальное число (строки):
+                    <input type="number" id="startNumber" min="1" max="1000" value="1">
+                </label>
+                <label>
+                    Конечное число (строки):
+                    <input type="number" id="endNumber" min="1" max="1000" value="10">
+                </label>
+                <label>
+                    Ширина ячейки (px):
+                    <input type="number" id="cellWidth" min="30" max="300" value="100">
+                </label>
+                <label>
+                    Высота ячейки (px):
+                    <input type="number" id="cellHeight" min="30" max="200" value="60">
+                </label>
+                <label>
+                    Масштаб (Zoom %):
+                    <input type="range" id="zoom" min="10" max="200" value="100" oninput="document.getElementById('zoomValue').textContent = this.value + '%'">
+                    <span id="zoomValue" class="value-display">100%</span>
+                </label>
+            </div>
+
+            <div class="section">
+                <h3>Угловая ячейка (левый верхний угол)</h3>
+                <label>
+                    Текст в угловой ячейке:
+                    <input type="text" id="cornerText" placeholder="Оставьте пустым если не нужно">
+                </label>
+                <label>
+                    Цвет текста:
+                    <input type="color" id="cornerColor" value="#ffffff">
+                </label>
+                <label>
+                    Размер шрифта (px):
+                    <input type="number" id="cornerFontSize" min="10" max="72" value="20">
+                </label>
+                <label>
+                    Шрифт:
+                    <select id="cornerFontFamily">
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="'Times New Roman', serif">Times New Roman</option>
+                        <option value="'Courier New', monospace">Courier New</option>
+                        <option value="Georgia, serif">Georgia</option>
+                        <option value="Verdana, sans-serif">Verdana</option>
+                        <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+                    </select>
+                </label>
+                <label>
+                    <input type="checkbox" id="cornerBold">
+                    Жирный шрифт
+                </label>
+            </div>
+
+            <div class="section">
+                <h3>Стили ячеек</h3>
+                <label>
+                    Размер шрифта (px):
+                    <input type="number" id="fontSize" min="10" max="72" value="24">
+                </label>
+                <label>
+                    <input type="checkbox" id="cellBold">
+                    Жирный шрифт
+                </label>
+                <label>
+                    Цвет текста:
+                    <input type="color" id="textColor" value="#000000">
+                </label>
+                <label>
+                    <input type="checkbox" id="enableTextStroke">
+                    Включить обводку текста
+                </label>
+                <label>
+                    Цвет обводки текста:
+                    <input type="color" id="textStrokeColor" value="#ffffff">
+                </label>
+                <label>
+                    Толщина обводки (px):
+                    <input type="number" id="textStrokeWidth" min="0" max="10" value="2">
+                </label>
+                <label>
+                    Цвет фона ячеек:
+                    <input type="color" id="cellBgColor" value="#f5f5f5">
+                </label>
+                <label>
+                    Прозрачность фона ячеек (%):
+                    <input type="range" id="cellBgOpacity" min="0" max="100" value="100" oninput="document.getElementById('cellBgOpacityValue').textContent = this.value + '%'">
+                    <span id="cellBgOpacityValue" class="value-display">100%</span>
+                </label>
+                <label>
+                    Цвет границ:
+                    <input type="color" id="borderColor" value="#333333">
+                </label>
+                <label>
+                    Толщина границ (px):
+                    <input type="number" id="borderWidth" min="1" max="10" value="2">
+                </label>
+                <label>
+                    Отступ в ячейках (px):
+                    <input type="number" id="cellPadding" min="0" max="50" value="10">
+                </label>
+                <label>
+                    Шрифт:
+                    <select id="fontFamily">
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="'Times New Roman', serif">Times New Roman</option>
+                        <option value="'Courier New', monospace">Courier New</option>
+                        <option value="Georgia, serif">Georgia</option>
+                        <option value="Verdana, sans-serif">Verdana</option>
+                        <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="section">
+                <h3>Стили заголовка</h3>
+                <label>
+                    <input type="checkbox" id="headerBold" checked>
+                    Жирный шрифт заголовков
+                </label>
+                <label>
+                    Цвет фона заголовка:
+                    <input type="color" id="headerBgColor" value="#4CAF50">
+                </label>
+                <label>
+                    Прозрачность фона заголовка (%):
+                    <input type="range" id="headerBgOpacity" min="0" max="100" value="100" oninput="document.getElementById('headerBgOpacityValue').textContent = this.value + '%'">
+                    <span id="headerBgOpacityValue" class="value-display">100%</span>
+                </label>
+                <label>
+                    Цвет текста заголовка:
+                    <input type="color" id="headerTextColor" value="#ffffff">
+                </label>
+            </div>
+
+            <div class="section">
+                <h3>Фон таблицы</h3>
+                <label>
+                    Цвет фона таблицы:
+                    <input type="color" id="tableBgColor" value="#ffffff">
+                </label>
+                <label>
+                    Прозрачность фона таблицы (%):
+                    <input type="range" id="tableBgOpacity" min="0" max="100" value="100" oninput="document.getElementById('tableBgOpacityValue').textContent = this.value + '%'">
+                    <span id="tableBgOpacityValue" class="value-display">100%</span>
+                </label>
+            </div>
+
+            <div class="section">
+                <h3>Быстрые настройки прозрачности</h3>
+                <div class="quick-buttons">
+                    <button onclick="setAllOpacity(0)" class="btn-quick">🔲 Всё прозрачно</button>
+                    <button onclick="setAllOpacity(50)" class="btn-quick">◪ 50% прозрачно</button>
+                    <button onclick="setAllOpacity(100)" class="btn-quick">⬛ Всё непрозрачно</button>
+                </div>
+                <p class="hint">Быстрая установка прозрачности для всех элементов</p>
+            </div>
+
+            <div class="section">
+                <h3>Изображения на таблице</h3>
+                <label>
+                    Загрузить изображение:
+                    <input type="file" id="imageUpload" accept="image/*" multiple>
+                </label>
+                <div id="imagesList" class="images-list"></div>
+                <p class="hint">Загрузите изображения, они появятся на таблице. Перемещайте их мышкой!</p>
+            </div>
+
+            <div class="section">
+                <h3>Настройки скриншота</h3>
+                <label>
+                    <input type="checkbox" id="transparentBg" checked>
+                    Прозрачный фон PNG
+                </label>
+                <p class="hint">При включении, PNG будет с прозрачным фоном (альфа-канал)</p>
+            </div>
+
+            <div class="button-group">
+                <button onclick="generateTable()" class="btn btn-primary">🔄 Обновить таблицу</button>
+                <button onclick="takeScreenshot()" class="btn btn-success">📷 Скриншот PNG</button>
+                <button onclick="saveConfig()" class="btn btn-secondary">💾 Сохранить конфиг</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="tableContainer">
+                <!-- Таблица будет сгенерирована здесь -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
